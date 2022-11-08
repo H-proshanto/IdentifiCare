@@ -12,6 +12,7 @@ export const InputField = ({ text, setter, placeholder, onBlur }) => {
                     onChangeText={setter}
                     onBlur={onBlur}
                     value={text}
+                    onPointerEnter={() => styles}
                 />
             </View>
         </>
@@ -26,8 +27,8 @@ const styles = StyleSheet.create({
         marginTop: 14,
         marginLeft: 28,
         marginRight: 28,
-        borderWidth: 2,
         padding: 7,
+        borderWidth: 0.5,
         color: 'black',
     },
     inputTitle: {

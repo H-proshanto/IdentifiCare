@@ -25,7 +25,7 @@ export const LoginForm = ({ navigation }) => {
     return (
         <Formik
             initialValues={{ email: '', password: '' }}
-            onSubmit={(values) => console.log('Logged In')}
+            onSubmit={(values) => navigation.navigate('DashBoard')}
             validate={validate}
         >
             {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (

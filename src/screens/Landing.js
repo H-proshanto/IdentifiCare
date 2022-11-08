@@ -13,7 +13,7 @@ export const Landing = ({ navigation }) => {
         <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
             <View style={styles.headerContainer}>
                 <Image style={styles.headerlogo} source={require('../assets/logo.png')} />
-                <Text style={styles.headertext}> IdentifiCare </Text>
+                <Text style={styles.headertext}> Identitycare </Text>
             </View>
             <LoginForm navigation={navigation} />
             <View style={styles.buttonContainer}>
