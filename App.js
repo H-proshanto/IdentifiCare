@@ -15,7 +15,7 @@ export default function App() {
         <PaperProvider>
             <NavigationContainer>
                 <Stack.Navigator
-                    initialRouteName="Landing"
+                    initialRouteName="DashBoard"
                     screenOptions={({ navigation }) => ({
                         header: () => <TopNavbar navigation={navigation} />,
                     })}
