@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { login } from '../API/APICaller';
 import { MAIL_FORMAT } from '../config';
 import { ButtonUI } from './ButtonUI';
 import { InputField } from './InputField';
@@ -25,7 +26,15 @@ export const LoginForm = ({ navigation }) => {
     return (
         <Formik
             initialValues={{ email: '', password: '' }}
-            onSubmit={(values) => navigation.navigate('DashBoard')}
+            onSubmit={async (values) => {
+                try {
+                    await login(values);
+                    navigation.navigate('DashBoard');
+                } catch (error) {
+                    console.log(error.message);
+                }
+
+            }}
             validate={validate}
         >
             {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (

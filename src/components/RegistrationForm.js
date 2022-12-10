@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { register } from '../API/APICaller';
 import { MAIL_FORMAT } from '../config';
 import { ButtonUI } from './ButtonUI';
 import { InputField } from './InputField';
@@ -13,7 +14,7 @@ export const RegistrationForm = ({ navigation }) => {
             errors.name = 'Name is required';
         }
 
-        if (values.name.length > 10) {
+        if (values.name.length > 40) {
             errors.name = 'Username can not be more than 10 letters';
         }
 
@@ -37,7 +38,15 @@ export const RegistrationForm = ({ navigation }) => {
     return (
         <Formik
             initialValues={{ name: '', email: '', password: '', password2: '' }}
-            onSubmit={(values) => console.log('Registration Done')}
+            onSubmit={async (values) => {
+                try {
+                    await register(values);
+                    navigation.pop();
+                } catch (error) {
+                    console.log(error.message);
+                }
+
+            }}
             validate={validate}
         >
             {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (

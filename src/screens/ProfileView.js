@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Avatar } from 'react-native-paper';
 import { ButtonUI } from '../components/ButtonUI';
 
@@ -12,7 +13,27 @@ export const ProfileView = ({ navigation }) => {
                     style={styles.profileImage}
                     source={require('../assets/avatar.jpg')}
                 />
-                <Text style={styles.ProfileName}>Hadia Razin Mou</Text>
+                <Text style={styles.profileName}>Hadia Razin Mou</Text>
+            </View>
+            <View style={styles.profileDescription}>
+                <Text style={styles.bio}>
+                    I am a very passionate individual currently studying in Computer Science and
+                    Engineering. I am in my final year, finishing undergraduate degree from UITS.
+                </Text>
+            </View>
+            <View style={styles.socials}>
+                <TouchableOpacity onPress={() => console.log('goto link')}>
+                    <Image style={styles.icon} source={require('../assets/fb.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => console.log('goto link')}>
+                    <Image style={styles.icon} source={require('../assets/mail.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => console.log('goto link')}>
+                    <Image style={styles.icon} source={require('../assets/linkedIn.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => console.log('goto link')}>
+                    <Image style={styles.icon} source={require('../assets/github.png')} />
+                </TouchableOpacity>
             </View>
             <View style={styles.bottomContainer}>
                 <ButtonUI
@@ -20,7 +41,12 @@ export const ProfileView = ({ navigation }) => {
                     bodyStyle={styles.logoutBtnContainer}
                     buttonStyle={styles.logoutButton}
                     textStyle={styles.logoutText}
-                    onPress={() => console.log('log out')}
+                    onPress={() => {
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'Landing' }],
+                        });
+                    }}
                 />
             </View>
         </View>
@@ -33,17 +59,26 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
     },
     ProfileContainer: {
-        flex: 0.8,
+        flex: 0.4,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    ProfileName: {
-        marginTop: 14,
+    profileName: {
+        marginTop: 21,
         fontSize: 27,
         fontWeight: '400',
     },
     profileImage: {
-        marginTop: 21,
+        marginTop: 7,
+    },
+    profileDescription: {
+        flex: 0.3,
+    },
+    socials: {
+        flex: 0.1,
+        marginBottom: 14,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
     },
     bottomContainer: {
         flex: 0.2,
@@ -59,6 +94,7 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
         paddingTop: 5,
         borderRadius: 20,
+        borderWidth: 1.2,
     },
     logoutText: {
         color: 'white',
@@ -66,5 +102,15 @@ const styles = StyleSheet.create({
         padding: 5,
         textAlign: 'center',
         alignSelf: 'center',
+    },
+    bio: {
+        marginTop: 21,
+        marginLeft: 14,
+        fontSize: 21,
+        fontWeight: '300',
+    },
+    icon: {
+        height: 60,
+        width: 60,
     },
 });
