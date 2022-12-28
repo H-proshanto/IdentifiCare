@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { DashBoard } from '../screens/Dashboard';
-import { QRCode } from '../screens/QRCode';
+import { QRView } from '../screens/QRView';
 import { Wallet } from '../screens/Wallet';
 import { TabBarIcon } from './TabBarIcon';
 
@@ -31,7 +31,7 @@ export const Tabs = () => {
             />
             <Tab.Screen
                 name="QRCode"
-                component={QRCode}
+                component={QRView}
                 options={{
                     tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} title={'QR Code'} />,
                 }}

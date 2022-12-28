@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     container: {
         margin: 21,
         borderRadius: 15,
-        backgroundColor: '#7a7aff',
+        backgroundColor: '#ded9db',
         padding: 10,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     title: {
         textAlign: 'left',
         justifyContent: 'center',
-        color: 'white',
+        color: 'black',
     },
     icon: {
         width: 45,

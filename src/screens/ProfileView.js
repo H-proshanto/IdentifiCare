@@ -1,10 +1,27 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import React, { useState } from 'react';
+import { Image, Linking, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Avatar } from 'react-native-paper';
 import { ButtonUI } from '../components/ButtonUI';
 
 export const ProfileView = ({ navigation }) => {
+    const [image, setImage] = useState(null);
+
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+        console.log(result);
+
+        if (!result.canceled) {
+            setImage(result.assets[0].uri);
+        }
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.ProfileContainer}>
@@ -22,10 +39,10 @@ export const ProfileView = ({ navigation }) => {
                 </Text>
             </View>
             <View style={styles.socials}>
-                <TouchableOpacity onPress={() => console.log('goto link')}>
+                <TouchableOpacity onPress={pickImage}>
                     <Image style={styles.icon} source={require('../assets/fb.png')} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log('goto link')}>
+                <TouchableOpacity onPress={() => Linking.openURL('https://gmail.com')}>
                     <Image style={styles.icon} source={require('../assets/mail.png')} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => console.log('goto link')}>
